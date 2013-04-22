@@ -26,3 +26,5 @@ C:\Users\brndm_000\Desktop\SLOrk\Kinect Controller\Kinect Controller\obj\Debug\S
 C:\Users\brndm_000\Desktop\SLOrk\Kinect Controller\Kinect Controller\obj\Debug\SkeletonBasics-WPF.g.resources
 C:\Users\brndm_000\Desktop\SLOrk\Kinect Controller\Kinect Controller\obj\Debug\Kinect_Controller.Properties.Resources.resources
 C:\Users\brndm_000\Desktop\SLOrk\Kinect Controller\Kinect Controller\obj\Debug\Kinect Controller.csproj.GenerateResource.Cache
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\SkeletonBasics-WPF.exe
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\SkeletonBasics-WPF.pdb
