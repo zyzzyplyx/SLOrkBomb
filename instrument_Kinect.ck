@@ -1,6 +1,6 @@
 0 => int muted;
 
-BlitSquare s => LPF l => Chorus r => dac;
+BlitSquare s => LPF l => Chorus r => NRev rev => dac;
 
 0.02 => float gain;
 0.1 => float mix;
@@ -13,6 +13,7 @@ mix => r.mix;
 mFreq => r.modFreq;
 mDepth => r.modDepth;
 lFreq => l.freq;
+0.1 => rev.mix;
 
 //Spawn keyboard listener
 Hid keyboard;
@@ -43,7 +44,10 @@ spork ~ speedControl (oelx, 125);
 spork ~ depthControl (oely);
 spork ~ gainControl (oery, .125);
 spork ~ randomizeFreq (oerx);
-spork ~ makeNoise (oelz);
+
+Noise n => LPF lo => NRev reverb => dac;
+spork ~ noise(lo);
+spork ~ makeNoise (oelz, lo);
 
 //Still using keyboard for mute (for now)
 spork ~ processKeyboard(keyboard);
@@ -56,7 +60,7 @@ while (true) {
 }
 
 /* sporks a noise whenever OscEvent crosses a threshold */
-fun void makeNoise (OscEvent oe)
+fun void makeNoise (OscEvent oe, LPF l)
 {
     while( true )
     {
@@ -65,8 +69,7 @@ fun void makeNoise (OscEvent oe)
         while( oe.nextMsg() )
         { 
             oe.getFloat() => float X;             
-            if( X < 1)
-                spork ~ noise();
+            Math.max((X)/8, 0) => l.gain;
         }
     } 
 }
@@ -83,7 +86,7 @@ fun void gainControl (OscEvent oe, float centerGain)
         while( oe.nextMsg() )
         { 
             oe.getFloat() => float X;             
-            Math.max(centerGain + X/8, 0) => s.gain;
+            Math.max(centerGain + X/4, 0) => s.gain;
         }
     } 
 }
@@ -160,31 +163,34 @@ fun void processKeyboard(Hid keyboard)
     }
 }
 
-fun void noise()
-{
-    Noise n => LPF l => NRev r => dac;
-    
+fun void noise(LPF l)
+{   
     Math.random2(50, 200) => int init;
     init => l.freq;
-    .4 => l.gain;
-    Math.random2(2, 5) => int t;
-    Math.random2(100, 500) => int d;
+    0 => l.gain;
     
-    Math.random2(0, 1) => int inc;
-    
-    if (inc == 1) {
-        for (init + 1 => int i; i <= init + d; i++)
-        {
-            i => l.freq;
-            t::ms => now;
+    while (true)
+    {
+        Math.random2(2, 5) => int t;
+        Math.random2(100, 500) => int d;
+        
+        Math.random2(0, 1) => int inc;
+        
+        if (inc == 1) {
+            for (init + 1 => int i; i <= init + d; i++)
+            {
+                i => l.freq;
+                t::ms => now;
+            }
         }
-    }
-    else {
-        for (init + d => int i; i >= init + 1; i--)
-        {
-            i => l.freq;
-            t::ms => now;
+        else {
+            for (init + d => int i; i >= init + 1; i--)
+            {
+                i => l.freq;
+                t::ms => now;
+            }
         }
+        1::ms => now;
     }
 }
- 
+
