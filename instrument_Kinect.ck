@@ -41,7 +41,7 @@ recv.event( "/left/z, f" ) @=> OscEvent @ oelz;
 // Spawn Kinect Controls
 spork ~ speedControl (oelx, 125);
 spork ~ depthControl (oely);
-spork ~ gainControl (oery, .25);
+spork ~ gainControl (oery, .125);
 spork ~ randomizeFreq (oerx);
 spork ~ makeNoise (oelz);
 
@@ -61,7 +61,7 @@ fun void makeNoise (OscEvent oe)
     while( true )
     {
         oe => now;
-
+        
         while( oe.nextMsg() )
         { 
             oe.getFloat() => float X;             
@@ -72,31 +72,31 @@ fun void makeNoise (OscEvent oe)
 }
 
 /* Controls gain for the sin oscillator, using an oe event
-   Expects signal to be on the range [-1, 1]
-   */
+Expects signal to be on the range [-1, 1]
+*/
 fun void gainControl (OscEvent oe, float centerGain)
 {
     while( true )
     {
         oe => now;
-
+        
         while( oe.nextMsg() )
         { 
             oe.getFloat() => float X;             
-            centerGain + X/2 => s.gain;
+            Math.max(centerGain + X/8, 0) => s.gain;
         }
     } 
 }
 
 /* Modifies the baseTime parameter using whatever event is passed.
-   Expects event to be on range [-1, 1]
-   */
+Expects event to be on range [-1, 1]
+*/
 fun void speedControl (OscEvent oe, float centerTime)
 {
     while( true )
     {
         oe => now;
-
+        
         while( oe.nextMsg() )
         { 
             oe.getFloat() => float X;             
@@ -111,26 +111,26 @@ fun void depthControl (OscEvent oe)
     while( true )
     {
         oe => now;
-
+        
         while( oe.nextMsg() )
         { 
             oe.getFloat() => float X;             
-            X => r.modDepth;
+            X + 1 => r.modDepth;
         }
     } 
 }
 
 fun void randomizeFreq (OscEvent oe)
 {
-        while( true )
+    while( true )
     {
         oe => now;
-
+        
         while( oe.nextMsg() )
         { 
             oe.getFloat() => float X;             
             if( X > .5)
-               Math.random2(1, 80) => baseFreq;
+                Math.random2(1, 80) => baseFreq;
         }
     }
 }
@@ -163,12 +163,13 @@ fun void processKeyboard(Hid keyboard)
 fun void noise()
 {
     Noise n => LPF l => NRev r => dac;
-
+    
     Math.random2(50, 200) => int init;
     init => l.freq;
-    Math.random2(2, 25) => int t;
+    .4 => l.gain;
+    Math.random2(2, 5) => int t;
     Math.random2(100, 500) => int d;
-
+    
     Math.random2(0, 1) => int inc;
     
     if (inc == 1) {
@@ -186,3 +187,4 @@ fun void noise()
         }
     }
 }
+ 
