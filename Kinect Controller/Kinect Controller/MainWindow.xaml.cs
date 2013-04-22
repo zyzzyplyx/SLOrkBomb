@@ -192,6 +192,11 @@ namespace Kinect_Controller
             {
                 this.statusBarText.Text = Properties.Resources.NoKinectReady;
             }
+            else
+            {
+                this.sensor.SkeletonStream.TrackingMode = SkeletonTrackingMode.Seated;
+                this.checkBoxSeatedMode.IsChecked = true;
+            }
         }
 
         /// <summary>
@@ -282,8 +287,13 @@ namespace Kinect_Controller
             Joint right = skeleton.Joints[JointType.HandRight];
             Joint left = skeleton.Joints[JointType.HandLeft];
 
-             OscBundle msg = new OscBundle(0, new OscElement("/right/x", right.Position.X),
-                new OscElement("/left/y", left.Position.Y));
+             OscBundle msg = new OscBundle(0, 
+                 new OscElement("/right/x", right.Position.X),
+                 new OscElement("/right/y", right.Position.Y),
+                 new OscElement("/right/z", right.Position.Z),
+                 new OscElement("/left/x", left.Position.X),
+                 new OscElement("/left/y", left.Position.Y),
+                 new OscElement("/left/z", left.Position.Z));
             
             if (this.euclidDist(right.Position, left.Position) < 10 && right.Position.Y > 0.3)
             {

@@ -14,6 +14,10 @@ mFreq => r.modFreq;
 mDepth => r.modDepth;
 lFreq => l.freq;
 
+//Spawn keyboard listener
+Hid keyboard;
+keyboard.openKeyboard(0);
+
 // create our OSC receiver
 OscRecv recv;
 // use port 6449 (or whatever)
@@ -29,8 +33,8 @@ recv.event( "/left/x, f" ) @=> OscEvent @ oelx;
 recv.event( "/left/y, f" ) @=> OscEvent @ oely;
 recv.event( "/left/z, f" ) @=> OscEvent @ oelz;
 
-15 => int baseFreq;
-125 => int baseTime;
+15 => float baseFreq;
+125 => float baseTime;
 
 [ 0, 2, 4, 7, 9, 11 ] @=> int hi[];
 
@@ -39,6 +43,7 @@ spork ~ speedControl (oelx, 125);
 spork ~ depthControl (oely);
 spork ~ gainControl (oery, .25);
 spork ~ randomizeFreq (oerx);
+spork ~ makeNoise (oelz);
 
 //Still using keyboard for mute (for now)
 spork ~ processKeyboard(keyboard);
@@ -50,6 +55,7 @@ while (true) {
     Math.random2(1, 5) => s.harmonics;
 }
 
+/* sporks a noise whenever OscEvent crosses a threshold */
 fun void makeNoise (OscEvent oe)
 {
     while( true )
@@ -68,7 +74,7 @@ fun void makeNoise (OscEvent oe)
 /* Controls gain for the sin oscillator, using an oe event
    Expects signal to be on the range [-1, 1]
    */
-fun void gainControl (OscEvent oe, centerGain)
+fun void gainControl (OscEvent oe, float centerGain)
 {
     while( true )
     {
@@ -85,7 +91,7 @@ fun void gainControl (OscEvent oe, centerGain)
 /* Modifies the baseTime parameter using whatever event is passed.
    Expects event to be on range [-1, 1]
    */
-fun void speedControl (OscEvent oe, centerTime)
+fun void speedControl (OscEvent oe, float centerTime)
 {
     while( true )
     {
@@ -100,7 +106,7 @@ fun void speedControl (OscEvent oe, centerTime)
 }
 
 /* Controls mod depth using an osc event */
-fun void depthControl (OscEvent oe, centerDepth)
+fun void depthControl (OscEvent oe)
 {
     while( true )
     {

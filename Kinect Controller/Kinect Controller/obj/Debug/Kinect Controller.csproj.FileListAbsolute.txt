@@ -28,3 +28,15 @@ C:\Users\brndm_000\Desktop\SLOrk\Kinect Controller\Kinect Controller\obj\Debug\K
 C:\Users\brndm_000\Desktop\SLOrk\Kinect Controller\Kinect Controller\obj\Debug\Kinect Controller.csproj.GenerateResource.Cache
 C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\SkeletonBasics-WPF.exe
 C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\SkeletonBasics-WPF.pdb
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\bin\Debug\SkeletonBasics-WPF.exe
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\bin\Debug\SkeletonBasics-WPF.pdb
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\bin\Debug\Ventuz.OSC.dll
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\bin\Debug\Ventuz.OSC.xml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\Kinect Controller.csprojResolveAssemblyReference.cache
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\MainWindow.baml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\MainWindow.g.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\App.g.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\SkeletonBasics-WPF_MarkupCompile.cache
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\SkeletonBasics-WPF.g.resources
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\Kinect_Controller.Properties.Resources.resources
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Kinect Controller\Kinect Controller\obj\Debug\Kinect Controller.csproj.GenerateResource.Cache
