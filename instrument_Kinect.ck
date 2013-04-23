@@ -8,12 +8,20 @@ BlitSquare s => LPF l => Chorus r => NRev rev => dac;
 1 => float mDepth;
 1000 => float lFreq;
 
+//Randomization control
+0 => int cycle;
+true => int randomize;
+12 => int numNotes;
+int offset[numNotes];
+int index[numNotes];
+
 gain => s.gain;
 mix => r.mix;
 mFreq => r.modFreq;
 mDepth => r.modDepth;
 lFreq => l.freq;
-0.1 => rev.mix;
+0.5 => rev.mix;
+0.4 => dac.gain;
 
 //Spawn keyboard listener
 Hid keyboard;
@@ -54,9 +62,18 @@ spork ~ processKeyboard(keyboard);
 
 while (true) {
     baseTime::ms => now;
-    
-    Std.mtof( baseFreq + Math.random2(0,3) * 12 + hi[Math.random2(0,hi.size()-1)] ) => s.freq;
+    if(randomize)
+    {
+        Math.random2(0,3) * 12 => offset[cycle];
+        Math.random2(0,hi.size()-1) => index[cycle];
+    }
+    Std.mtof( baseFreq + offset[cycle] + hi[index[cycle]] ) => s.freq;
     Math.random2(1, 5) => s.harmonics;
+    1 +=> cycle;
+    if(cycle == numNotes)
+    {
+        0 => cycle;
+    }
 }
 
 /* sporks a noise whenever OscEvent crosses a threshold */
@@ -133,7 +150,12 @@ fun void randomizeFreq (OscEvent oe)
         { 
             oe.getFloat() => float X;             
             if( X > .5)
+            {
+                true => randomize;
                 Math.random2(1, 80) => baseFreq;
+            }
+            else
+                true => randomize;
         }
     }
 }
