@@ -5,7 +5,7 @@ SinOsc modl => car;
 0.05 => reverb.mix;
 // this is the magic that tells chuck to do FM
 2 => car.sync;
-.5 => dac.gain;
+.02 => dac.gain;
 
 // set carrier frequency
 200 => car.freq;
@@ -27,10 +27,10 @@ spork ~ ControlPitch(oerx, modr, 200);
 //spork ~ ControlPitch(oelx, modl, 400);
 spork ~ ControlGain(oery, modr);
 //spork ~ ControlGain(oely, modl);
-
+0 => modr.gain;
 spork ~ ControlBeats(oely, modr, modl);
 
-spork ~ ControlRhythm(oelx, env);
+//spork ~ ControlRhythm(oelx, env);
 
 1 => env.keyOn;
 
@@ -43,7 +43,7 @@ fun void ControlBeats (OscEvent oe, SinOsc base, SinOsc beat)
     {
         // wait for event to arrive
         oe => now;
-
+        
         // grab the next message from the queue. 
         while( oe.nextMsg() )
         { 
@@ -61,7 +61,7 @@ fun void ControlGain (OscEvent oe, SinOsc s)
     {
         // wait for event to arrive
         oe => now;
-
+        
         // grab the next message from the queue. 
         while( oe.nextMsg() )
         { 
@@ -81,17 +81,17 @@ fun void ControlPitch (OscEvent oe, SinOsc s, int center)
     {
         // wait for event to arrive
         oe => now;
-
+        
         // grab the next message from the queue. 
         while( oe.nextMsg() )
         { 
             float X;
-
+            
             // getFloat fetches the expected float (as indicated by "i f")
             oe.getFloat() => X;
             Math.pow(2, X)*center => float freq;
             freq => s.freq;
-
+            
             // print
             //<<< "PITCH:", freq >>>;
         }
@@ -110,7 +110,7 @@ fun void ControlRhythm (OscEvent oe, Envelope env)
         {
             // getFloat fetches the expected float (as indicated by "i f")
             oe.getFloat() => float X;
-
+            
             if(count == 30)
             {
                 0 => count;
