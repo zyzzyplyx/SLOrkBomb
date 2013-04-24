@@ -1,0 +1,24 @@
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\Tablet Control.exe
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\Tablet Control.pdb
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\resources.pri
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\AppxManifest.xml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\Tablet Control.build.appxrecipe
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\App.g.i.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\App.g.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\Common\StandardStyles.g.i.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\Common\StandardStyles.g.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\MainPage.g.i.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\MainPage.g.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\XamlTypeInfo.g.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\App.xaml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\Common\StandardStyles.xaml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\MainPage.xaml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\Tablet Control.exe
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\Tablet Control.pdb
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\priconfig.xml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\layout.resfiles
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\resources.resfiles
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\pri.resfiles
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\LanguageQualifiers.txt
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\ProjectArchitectures.txt
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\ARM\Debug\Tablet Control.csprojResolveAssemblyReference.cache

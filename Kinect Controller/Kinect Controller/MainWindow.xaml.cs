@@ -146,7 +146,7 @@ namespace Kinect_Controller
             // Create the drawing group we'll use for drawing
             this.drawingGroup = new DrawingGroup();
 
-            this.udpwriter = new UdpWriter("127.0.0.1", 12345);
+            this.udpwriter = new UdpWriter("192.168.188.27", 12345);
 
             // Create an image source that we can use in our image control
             this.imageSource = new DrawingImage(this.drawingGroup);

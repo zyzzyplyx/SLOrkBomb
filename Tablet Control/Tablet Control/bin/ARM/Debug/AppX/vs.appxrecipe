@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>OLIVER</Machine>
+    <WindowsUser>Nicholas</WindowsUser>
+    <SolutionConfiguration>Debug|ARM</SolutionConfiguration>
+    <PackageArchitecture>arm</PackageArchitecture>
+    <RegisteredManifestChecksum>F40FECF4E3AB69CE06195D920FE0D4F04DF6188A5AF996F19C35F478D30F1390</RegisteredManifestChecksum>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-04-22T20:14:05.265</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\Tablet Control.exe">
+      <PackagePath>Tablet Control.exe</PackagePath>
+      <Modified>2013-04-22T20:14:05.110</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\Tablet Control.pdb">
+      <PackagePath>Tablet Control.pdb</PackagePath>
+      <Modified>2013-04-22T20:14:05.060</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\Assets\Logo.png">
+      <PackagePath>Assets\Logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T03:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\Assets\SmallLogo.png">
+      <PackagePath>Assets\SmallLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T03:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T03:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T03:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\App.xaml">
+      <PackagePath>App.xaml</PackagePath>
+      <Modified>2013-04-22T20:07:13.367</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\Common\StandardStyles.xaml">
+      <PackagePath>Common\StandardStyles.xaml</PackagePath>
+      <Modified>2012-06-26T23:19:20.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\MainPage.xaml">
+      <PackagePath>MainPage.xaml</PackagePath>
+      <Modified>2013-04-22T20:07:13.424</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\ARM\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2013-04-22T20:14:05.184</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

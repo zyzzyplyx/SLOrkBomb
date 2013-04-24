@@ -54,7 +54,6 @@ while (true) {
     0 => int i;
     while(i < 16)
     {
-        <<< loop[i] >>>;
         baseTime::ms => now;
         Std.mtof( loop[i] + 60 ) => s.freq;
         1 +=> i;
@@ -73,7 +72,7 @@ fun void processKeyboard(Hid keyboard)
         while (keyboard.recv(msg)) {
             if (msg.type == Hid.BUTTON_DOWN)
             {
-                if(msg.ascii == 32)
+                if(msg.ascii == 10)
                 {
                     <<< "inserting" >>>;
                     // Set the current beat pattern to the performance

@@ -1,0 +1,23 @@
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\Debug\Tablet Control.exe
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\Debug\Tablet Control.pdb
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\Debug\resources.pri
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\Debug\AppxManifest.xml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\bin\Debug\Tablet Control.build.appxrecipe
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\App.g.i.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\App.g.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\Common\StandardStyles.g.i.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\Common\StandardStyles.g.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\MainPage.g.i.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\MainPage.g.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\XamlTypeInfo.g.cs
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\App.xaml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\Common\StandardStyles.xaml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\MainPage.xaml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\Tablet Control.exe
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\Tablet Control.pdb
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\priconfig.xml
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\layout.resfiles
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\resources.resfiles
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\pri.resfiles
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\LanguageQualifiers.txt
+C:\Users\brndm_000\Documents\GitHub\SLOrkBomb\Tablet Control\Tablet Control\obj\Debug\ProjectArchitectures.txt
