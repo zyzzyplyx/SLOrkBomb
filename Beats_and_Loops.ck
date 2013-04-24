@@ -10,7 +10,7 @@ SinOsc modl => car;
 300 => modr.gain;
 300 => modl.gain;
 100 => low.freq;
-.01 => low.gain;
+.1 => low.gain;
 
 // set carrier frequency
 100 => car.freq;
@@ -18,31 +18,34 @@ SinOsc modl => car;
 Hid keyboard;
 keyboard.openKeyboard(0);
 Hid mouse;
-mouse.openMouse(1);
+mouse.openMouse(0);
 
 spork ~ ControlBeats(modr, modl);
 
 1 => env.keyOn;
 
-/* ~~~~~~~~~~~~~~ KEYBOARD INSTRUMENT ~~~~~~~~~~~~~~ */
+//uncomment this to turn off the bass
+//low =< dac;
 
+/* ~~~~~~~~~~~~~~ KEYBOARD INSTRUMENT ~~~~~~~~~~~~~~ */
+16 => int numNotes;
 0 => int muted;
 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] @=> int notes[];
 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] @=> int loop[];
 
-BlitSquare s => LPF l => Chorus r => dac;
-
-0.02 => float gain;
+//BlitSquare s => LPF l => Chorus r => dac;
+BlitSquare s => dac;
+0.1 => float gain;
 0.1 => float mix;
 200 => float mFreq;
-1 => float mDepth;
+.5 => float mDepth;
 1000 => float lFreq;
 
 gain => s.gain;
-mix => r.mix;
-mFreq => r.modFreq;
-mDepth => r.modDepth;
-lFreq => l.freq;
+//mix => r.mix;
+//mFreq => r.modFreq;
+//mDepth => r.modDepth;
+//lFreq => l.freq;
 
 15 => int baseFreq;
 125 => int baseTime;
@@ -52,10 +55,16 @@ spork ~ processKeyboard(keyboard);
 
 while (true) {
     0 => int i;
-    while(i < 16)
+    while(i < numNotes)
     {
         baseTime::ms => now;
-        Std.mtof( loop[i] + 60 ) => s.freq;
+        if(loop[i] == 0)
+            0 => s.gain;
+        else
+       {
+            Std.mtof( loop[i]*i/2 + 60 ) => s.freq;
+            gain => s.gain;
+        }   
         1 +=> i;
     }
     Math.random2(1, 5) => s.harmonics;
@@ -81,7 +90,7 @@ fun void processKeyboard(Hid keyboard)
                 }
                 else
                 {
-                    msg.ascii % 16 => int index;
+                    msg.ascii % numNotes => int index;
                     1 +=> notes[index];
                 }
                 
