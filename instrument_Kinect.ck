@@ -20,8 +20,9 @@ mix => r.mix;
 mFreq => r.modFreq;
 mDepth => r.modDepth;
 lFreq => l.freq;
-0.5 => rev.mix;
+0.1 => rev.mix;
 0.4 => dac.gain;
+0 => s.gain;
 
 //Spawn keyboard listener
 Hid keyboard;
@@ -64,7 +65,7 @@ while (true) {
     baseTime::ms => now;
     if(randomize)
     {
-        Math.random2(0,3) * 12 => offset[cycle];
+        Math.random2(0,2) * 12 => offset[cycle];
         Math.random2(0,hi.size()-1) => index[cycle];
     }
     Std.mtof( baseFreq + offset[cycle] + hi[index[cycle]] ) => s.freq;
@@ -135,7 +136,7 @@ fun void depthControl (OscEvent oe)
         while( oe.nextMsg() )
         { 
             oe.getFloat() => float X;             
-            X + 1 => r.modDepth;
+            -1 * (X - 1)/4 => rev.mix;
         }
     } 
 }
@@ -215,4 +216,3 @@ fun void noise(LPF l)
         1::ms => now;
     }
 }
-
