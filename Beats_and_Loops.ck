@@ -18,7 +18,7 @@ SinOsc modl => car;
 Hid keyboard;
 keyboard.openKeyboard(0);
 Hid mouse;
-mouse.openMouse(0);
+mouse.openMouse(1);
 
 spork ~ ControlBeats(modr, modl);
 
@@ -41,7 +41,7 @@ BlitSquare s => dac;
 .5 => float mDepth;
 1000 => float lFreq;
 
-gain => s.gain;
+0 => s.gain;
 //mix => r.mix;
 //mFreq => r.modFreq;
 //mDepth => r.modDepth;
