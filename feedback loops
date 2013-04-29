@@ -1,0 +1,121 @@
+MAUI_View control_view;
+
+MAUI_Slider pitshift;
+
+MAUI_Slider delay;
+
+MAUI_Slider reverb;
+
+MAUI_Slider volume;
+
+
+
+control_view.size( 250, 300 );
+
+control_view.name("NOISE");
+
+
+
+pitshift.range(-1,4);
+
+pitshift.value(1);
+
+pitshift.size(200,pitshift.height() );
+
+pitshift.position(0,0);
+
+pitshift.value(.8);
+
+pitshift.name("pitch");
+
+control_view.addElement(pitshift);
+
+
+
+delay.range(0,5000);
+
+delay.size(200,delay.height() );
+
+delay.position(0,50);
+
+delay.value(100);
+
+delay.name("delay");
+
+control_view.addElement(delay);
+
+
+
+reverb.range(0,20);
+
+reverb.size(200,reverb.height() );
+
+reverb.position(0,100);
+
+reverb.value(0);
+
+reverb.name("reverb");
+
+control_view.addElement(reverb);
+
+
+
+volume.range(-2,2);
+
+volume.size(200,volume.height() );
+
+volume.position(0,150);
+
+volume.precision(10);
+
+volume.value(0);
+
+volume.name("gain");
+
+control_view.addElement(volume);
+
+
+
+
+
+control_view.display();
+
+// open the keyboard
+
+    adc => Gain g=> PRCRev r => PitShift p => Delay d => dac;
+
+    
+
+        adc.gain(10); 
+
+        dac.gain(2);
+
+
+
+while(true)
+
+{
+
+    p.shift (pitshift.value()); 
+
+    1 => p.mix; 
+
+    
+
+    delay.value() => float DTime;
+
+    DTime::samp => d.delay;
+
+    
+
+    reverb.value() => r.mix;
+
+    
+
+    g.gain(volume.value() );
+
+    second => now;
+
+    
+}
+
