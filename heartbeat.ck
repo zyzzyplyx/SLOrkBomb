@@ -1,16 +1,16 @@
 ModalBar md => JCRev reverb => Chorus c => LPF low => Echo a => dac;
 1 => reverb.mix;
-1 => reverb.gain;
+.5 => reverb.gain;
 1 => c.mix;
 100 => c.modFreq;
-1000 => low.freq;
+100 => low.freq;
 10::ms => a.delay;
 50 => md.freq;
 6 => md.preset;
 500 => int delay;
 
 Hid mouse;
-mouse.openMouse(0);
+mouse.openMouse(1);
 
 spork ~ controlMouse();
 
@@ -21,7 +21,7 @@ while (true) {
     delay::ms => now;
     
     0.8 => md.strikePosition;
-    0.5 => md.strike;
+    0.1 => md.strike;
     
     delay*2::ms => now;
 }
