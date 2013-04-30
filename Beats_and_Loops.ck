@@ -1,10 +1,5 @@
 Hid keyboard;
 keyboard.openKeyboard(0);
-Hid mouse;
-mouse.openMouse(1);
-
-//uncomment this to turn off the bass
-//low =< dac;
 
 /* ~~~~~~~~~~~~~~ KEYBOARD INSTRUMENT ~~~~~~~~~~~~~~ */
 16 => int numNotes;
@@ -13,21 +8,14 @@ mouse.openMouse(1);
 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] @=> int loop[];
 
 //BlitSquare s => LPF l => Chorus r => dac;
-BlitSquare s => dac;
-0.03 => float gain;
-0.1 => float mix;
-200 => float mFreq;
-.5 => float mDepth;
-1000 => float lFreq;
+//BlitSquare s => dac;
+SawOsc s => Envelope e => NRev rev => dac;
+0.1 => float gain;
 
 0 => s.gain;
-//mix => r.mix;
-//mFreq => r.modFreq;
-//mDepth => r.modDepth;
-//lFreq => l.freq;
+0.05 => rev.mix;
 
-15 => int baseFreq;
-125 => int baseTime;
+150 => int baseTime;
 
 // Spawn threads to handle keyboard/mouse inputs
 spork ~ processKeyboard(keyboard);
@@ -36,17 +24,18 @@ while (true) {
     0 => int i;
     while(i < numNotes)
     {
+        e.keyOn();
         baseTime::ms => now;
         if(loop[i] == 0)
             0 => s.gain;
         else
         {
-            Std.mtof( loop[i]*i/2 + 60 ) => s.freq;
+            Std.mtof( loop[i]*i/2 + 50 ) => s.freq;
             gain => s.gain;
         }   
         1 +=> i;
+        e.keyOff();
     }
-    Math.random2(1, 5) => s.harmonics;
     1::ms => now;
 }
 
