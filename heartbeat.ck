@@ -1,13 +1,13 @@
 ModalBar md => JCRev reverb => Chorus c => LPF low => Echo a => dac;
 1 => reverb.mix;
-.5 => reverb.gain;
+.7 => reverb.gain;
 1 => c.mix;
 100 => c.modFreq;
 100 => low.freq;
 10::ms => a.delay;
 50 => md.freq;
 6 => md.preset;
-500 => int delay;
+500 => float delay;
 
 Hid mouse;
 mouse.openMouse(1);
@@ -35,16 +35,7 @@ fun void controlMouse()
         while (mouse.recv(msg)) {
             if (msg.type == Hid.MOUSE_MOTION)
             {
-                if (msg.deltaX > 0) {
-                    delay + 5 => delay;
-                    <<< "increase" >>>;
-                }
-                else if (msg.deltaX < 0) {
-                    if (delay - 5 > 0) {
-                        delay - 5 => delay;
-                        <<< "decrease" >>>;
-                    }
-                }
+                60 + (msg.axisPosition) * 940 => delay;
             }
         }
     }
