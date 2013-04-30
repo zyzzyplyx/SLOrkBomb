@@ -1,28 +1,7 @@
-/* ~~~~~~~~~~~~~FM BEATS INSTRUMENT SETUP ~~~~~~~~~~~~~~~~~~~ */
-
-// setup our audios - frequency modulation (FM)
-SinOsc modr => SinOsc car => Envelope env => NRev reverb => LPF low => dac;
-SinOsc modl => car;
-0.05 => reverb.mix;
-// this is the magic that tells chuck to do FM
-2 => car.sync;
-.5 => dac.gain;
-300 => modr.gain;
-300 => modl.gain;
-100 => low.freq;
-.1 => low.gain;
-
-// set carrier frequency
-100 => car.freq;
-
 Hid keyboard;
 keyboard.openKeyboard(0);
 Hid mouse;
 mouse.openMouse(1);
-
-spork ~ ControlBeats(modr, modl);
-
-1 => env.keyOn;
 
 //uncomment this to turn off the bass
 //low =< dac;
@@ -35,7 +14,7 @@ spork ~ ControlBeats(modr, modl);
 
 //BlitSquare s => LPF l => Chorus r => dac;
 BlitSquare s => dac;
-0.1 => float gain;
+0.03 => float gain;
 0.1 => float mix;
 200 => float mFreq;
 .5 => float mDepth;
@@ -61,7 +40,7 @@ while (true) {
         if(loop[i] == 0)
             0 => s.gain;
         else
-       {
+        {
             Std.mtof( loop[i]*i/2 + 60 ) => s.freq;
             gain => s.gain;
         }   
@@ -96,50 +75,6 @@ fun void processKeyboard(Hid keyboard)
                 
                 <<< msg.ascii >>>;
             }
-        }
-    }
-}
-
-fun void ControlBeats (SinOsc base, SinOsc beat)
-{   
-    HidMsg msg;
-    
-    while (true) {
-        mouse => now;
-        
-        while (mouse.recv(msg)) {
-            if (msg.type == Hid.MOUSE_MOTION)
-            {
-                msg.axisPosition => float X; 
-              base.freq() + Math.max(20*X, 0) => beat.freq;
-              //base.gain() => beat.gain;
-              
-              Math.pow(2, X+1)*car.freq() => float freq;
-              freq => modr.freq;
-                
-                car.freq() + msg.deltaY/10 => car.freq;
-
-            }
-        }
-    }
-}
-
-fun void ControlGain (OscEvent oe, SinOsc s)
-{
-    // infinite event loop
-    while( true )
-    {
-        // wait for event to arrive
-        oe => now;
-        
-        // grab the next message from the queue. 
-        while( oe.nextMsg() )
-        { 
-            oe.getFloat() => float X;            
-            //Math.min(Math.max(X, 0)*1.5, .2) => s.gain;
-            300 * (X + 1) => s.gain;
-            // print
-            //<<< "GAIN:", X >>>;
         }
     }
 }
