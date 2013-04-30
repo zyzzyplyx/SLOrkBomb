@@ -1,12 +1,13 @@
 0 => int muted;
 
-BlitSquare s => LPF l => Chorus r => NRev rev => dac;
+BlitSquare s => Envelope env => LPF l => Chorus r => NRev rev => dac;
 
 0.02 => float gain;
 0.1 => float mix;
 200 => float mFreq;
 1 => float mDepth;
 1000 => float lFreq;
+1 => env.keyOn;
 
 //Randomization control
 0 => int cycle;
@@ -54,15 +55,19 @@ spork ~ depthControl (oely);
 spork ~ gainControl (oery, .125);
 spork ~ randomizeFreq (oerx);
 
-Noise n => LPF lo => NRev reverb => dac;
-spork ~ noise(lo);
+//Noise n => LPF lo => NRev reverb => dac;
+Noise n => LPF lo => Envelope noiseEnv => dac;
+//spork ~ noise(lo);
+.5::second => noiseEnv.duration;
+300 => lo.freq;
 spork ~ makeNoise (oelz, lo);
 
 //Still using keyboard for mute (for now)
 spork ~ processKeyboard(keyboard);
 
 while (true) {
-    baseTime::ms => now;
+    1 => env.keyOff;
+    (baseTime/3)::ms => now;
     if(randomize)
     {
         Math.random2(0,2) * 12 => offset[cycle];
@@ -75,6 +80,8 @@ while (true) {
     {
         0 => cycle;
     }
+    1 => env.keyOn;
+    (2*baseTime/3)::ms => now;
 }
 
 /* sporks a noise whenever OscEvent crosses a threshold */
@@ -86,8 +93,9 @@ fun void makeNoise (OscEvent oe, LPF l)
         
         while( oe.nextMsg() )
         { 
+            1 => noiseEnv.keyOn;
             oe.getFloat() => float X;             
-            Math.max((X)/8, 0) => l.gain;
+            Math.max((X-2.5), 0) * 3 => l.gain;
         }
     } 
 }
@@ -104,7 +112,7 @@ fun void gainControl (OscEvent oe, float centerGain)
         while( oe.nextMsg() )
         { 
             oe.getFloat() => float X;             
-            Math.max(centerGain + X/4, 0) => s.gain;
+            Math.max(centerGain + X/2, 0) => s.gain;
         }
     } 
 }
@@ -136,7 +144,8 @@ fun void depthControl (OscEvent oe)
         while( oe.nextMsg() )
         { 
             oe.getFloat() => float X;             
-            -1 * (X - 1)/4 => rev.mix;
+            Math.min(1.5 * Math.max(-1 * X + .4, 0), 2) => rev.mix;
+            Math.max(-1 * X, 0)=> r.modDepth;
         }
     } 
 }
