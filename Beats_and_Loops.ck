@@ -10,7 +10,7 @@ keyboard.openKeyboard(0);
 //BlitSquare s => LPF l => Chorus r => dac;
 //BlitSquare s => dac;
 SawOsc s => Envelope e => NRev rev => dac;
-0.05 => float gain;
+0.01 => float gain;
 
 0 => s.gain;
 0.05 => rev.mix;
