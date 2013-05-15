@@ -87,6 +87,7 @@ namespace Kinect_Controller
         /// Object to output data to OSC
         /// </summary>
         private UdpWriter udpwriter;
+        private UdpWriter uw2;
 
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
@@ -146,7 +147,8 @@ namespace Kinect_Controller
             // Create the drawing group we'll use for drawing
             this.drawingGroup = new DrawingGroup();
 
-            this.udpwriter = new UdpWriter("192.168.188.27", 12345);
+            this.udpwriter = new UdpWriter("192.168.187.56", 12345);
+            this.uw2 = new UdpWriter("192.168.187.152", 12345);
 
             // Create an image source that we can use in our image control
             this.imageSource = new DrawingImage(this.drawingGroup);
@@ -301,7 +303,8 @@ namespace Kinect_Controller
             }
              
             //OscBundle msg = new OscBundle(0, new OscElement("/gestures/swell", 1.0f));
-            udpwriter.Send(msg);  
+            udpwriter.Send(msg);
+            uw2.Send(msg);
            
         }
 
