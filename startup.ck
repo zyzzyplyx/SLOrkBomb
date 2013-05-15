@@ -3,9 +3,9 @@
 
 //Set up network discovery (taken from Ge Wang's clix-auto.ck)
 //Std.getenv("NET_NAME") => string newclient;
-"localhost" => string newclient;
+"128.12.234.83" => string newclient;
 <<<newclient>>>;
-multicast_me();
+spork ~ multicast_me();
 
 
 // create our OSC receiver
