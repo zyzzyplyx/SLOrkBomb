@@ -1,8 +1,9 @@
 128 => int num_chars; //Default: 128, tunable
 3.6 => float duty;
 1 => float dac_gain;
+0 => int char_count;
 
-[1.0, 32, 9, 8, 7, 6, 5, 4, 3, 2] @=> float tones[];
+[1.5, 32, 9, 8, 7, 6, 5, 4, 3, 2.5] @=> float tones[];
 
 Envelope env => dac;
 dac_gain => dac.gain;
@@ -40,7 +41,9 @@ fun void blip()
     1 => env.keyOn;
     
     0 => int count;
-    while(alive)
+    //logic is inverted here.  Alive == 0 means continue to loop,
+    // alive will be set to char count when it is time to exit.
+    while(alive == 0)
     {
         data[count] => int c;
         while(c != 0)
@@ -55,12 +58,19 @@ fun void blip()
         (count + 1)%num_chars => count;
     }
     
-    // One long pulse at end
-    //3 => dac_gain;
-    //300::ms => now;
-    //1 => dac_gain;
-    
+    env.gain() => float old_gain;
+    <<< alive >>>;
+    .15::second => dur off_time;
+    if(alive > 10){
+        <<< "BOOM" >>>;
+        20 => env.gain;
+        1::second => off_time;
+    }
+        
+    off_time=> env.duration;
     1 => env.keyOff;
+    off_time => now;
+    old_gain => env.gain;
 }
 
 fun void pulsate()
@@ -79,7 +89,6 @@ fun void pulsate()
 fun void processKeyboard(Hid keyboard)
 {
     HidMsg msg;
-    0 => int count;
     while (true) {
         keyboard => now;
         
@@ -90,21 +99,27 @@ fun void processKeyboard(Hid keyboard)
                 {
                     for(0 => int i; i < num_chars; i ++)
                         0 => data[i];
-                    0 => alive;
+                    char_count => alive;
+                    0 => char_count;
                 } 
                 else if(msg.ascii >= 48 && msg.ascii < 58)
                 {
+                    //if(((duty == tones[0]) && (msg.ascii == 48)) || 
+                    //   ((duty == tones[1]) && (msg.ascii == 49)))
+                    //   duty / 2 => duty;
                     tones[msg.ascii - 48] => duty;
+                    
                 }
                 else
                 {
-                    if(!alive)
+                    if(alive != 0)
                     {
                         1 => env.keyOn;
-                        1 => alive;
+                        0 => alive;
                         spork ~ blip();
                     }
                     msg.ascii => data[Math.random2(0,num_chars - 1)];
+                    1 + char_count => char_count;
                     //Maybe also use this to change speed?
                     //msg.ascii => data[count];
                     //(count + 1)%128 => count;
