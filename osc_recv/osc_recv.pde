@@ -6,7 +6,7 @@ int a, b, c;
 void setup() {
   size(640, 480);
   background(140,21,21);
-  osc = new OscP5(this, 12345);
+  osc = new OscP5(this, 5502);
 }
 
 void draw() {
