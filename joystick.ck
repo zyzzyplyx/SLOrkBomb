@@ -81,8 +81,6 @@ fun void multicast_receive()
         // grab the next message from the queue. 
         while( oe.nextMsg() != 0 )
         {
-            // 
-            <<<"got msg">>>;
             oe.getString() 	=> string newClientName;
             newsocket(newClientName);
         }
