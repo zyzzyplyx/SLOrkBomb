@@ -58,7 +58,7 @@ fun void multicast_me()
 
 	//multicast IP, port should also be the
 	//same as the multicast recv port in the server script
-	xmit.setHost( "224.0.0.1", 5501 );
+	xmit.setHost( "10.30.16.150", 5501 );
 		
 	//send out our presence every second
 	while(true)
