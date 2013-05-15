@@ -4,9 +4,9 @@ OscP5 osc;
 int a, b, c;
 
 void setup() {
-  size(1920, 1080);
+  size(640, 480);
   background(140,21,21);
-  osc = new OscP5(this, 33333);
+  osc = new OscP5(this, 12345);
 }
 
 void draw() {
